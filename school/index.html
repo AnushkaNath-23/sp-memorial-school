@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Added AOS CSS for animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.P. Memorial English Medium School</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Announcements Section at the Top -->
+    <section class="announcements py-2 bg-primary text-white text-center fixed-top" style="z-index: 1050;">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <!-- Contact Info -->
+                <p class="contact-info mb-0">
+                    <i class="fas fa-phone"></i> 033 3559 9796 
+                    <i class="fas fa-envelope ms-3"></i> chandrima.sharma79@gmail.com 
+                    <i class="fas fa-map-marker-alt ms-3"></i> 128-1/B, G.T. Road, (West) Konnagar, Hoogly, Pin - 712235
+                </p>
+    
+                <!-- Announcement Box -->
+                <div class="announcement-box text-dark text-center p-2">
+                    <strong>New Academic Year 2025-26</strong> <br>
+                    Admissions open for all classes.
+                    <a href="pages/admission.html" class="btn btn-warning btn-sm ms-2  btn-float">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+       
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="top: 80px; z-index: 1040;">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="assets/images/logo.jpeg" alt="School Logo" height="80" class="me-2">
+                <div class="d-flex flex-column">
+                    <span class="fw-bold">S.P. Memorial English Medium School</span>
+                    <p class="fs-6 text-muted mb-0">ICSE Curriculum</p>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html" style="color: #010000;" >Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="pages/about.html" style="color: #010000;">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="admissionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #010000;">
+                            Admission
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="admissionDropdown">
+                            <li><a class="dropdown-item" href="pages/apply-online.html">Apply Online</a></li>
+                            <li><a class="dropdown-item" href="pages/admission-notice.html">Admission Notice</a></li>
+                            <li><a class="dropdown-item" href="pages/fee-structure.html">Fee Structure</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="academicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #010000;">
+                            Academics
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="academicsDropdown">
+                            <!-- Removed School Timing option as requested -->
+                            <li><a class="dropdown-item" href="pages/rules-regulations.html">Rules and Regulations</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="newsEventsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #010000;">
+                            News and Events
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="newsEventsDropdown">
+                            <li><a class="dropdown-item" href="pages/announcements.html">Announcements</a></li>
+                            <li><a class="dropdown-item" href="pages/photo-gallery.html">Photo Gallery</a></li>
+                            <!-- Removed News option as requested -->
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="pages/contact.html" style="color: #010000;">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <!-- Left Column: Text -->
+                <div class="col-md-6">
+                    <h1 style="color: rgb(3, 3, 150); font-size: 2rem;">Welcome to S.P. Memorial English Medium School</h1>
+                    <p class="lead mb-4" style="color: #444; font-size: 2rem; font-weight: 700;">Under S.P. Memorial Trust. As per ICSE guidelines. Mobilizing Students to learn and grow.</p>
+                </div>
+    
+                <!-- Right Column: Image -->
+                <div class="col-md-6 text-center">
+                    <img src="assets/images/features/WhatsApp Image 2025-04-01 at 2.44.56 PM.jpeg" alt="School Building" class="img-fluid rounded">
+                </div>
+            </div>
+        </div>
+    </section>    
+    
+
+    <!-- Quick Links -->
+    <section class="quick-links py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">  <!-- Centering the row -->
+                <div class="col-md-4 mb-4">  <!-- Use col-md-4 for equal width -->
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-book mb-3"></i>
+                            <h5>Academics</h5>
+                            <p>Explore our curriculum</p>
+                            <a href="pages/academics.html" class="btn btn-outline-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-calendar-alt mb-3"></i>
+                            <h5>Events</h5>
+                            <p>Stay updated with activities</p>
+                            <a href="pages/news.html" class="btn btn-outline-primary">View Calendar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-users mb-3"></i>
+                            <h5>Admission</h5>
+                            <p>Join our school community</p>
+                            <a href="pages/admission.html" class="btn btn-outline-primary">Apply Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Salient Features --> 
+    <section class="quick-links py-5" style="background-color: #f8f8f5; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.15);">
+        <!-- Colorful texture elements -->
+        <div style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; opacity: 0.4; z-index: 0;">
+            <!-- Purple circle -->
+            <div style="position: absolute; width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #8b5cf6 0%, #c4b5fd 100%); top: -30px; left: 5%; filter: blur(2px);"></div>
+            <!-- Blue square -->
+            <div style="position: absolute; width: 100px; height: 100px; transform: rotate(45deg); background: linear-gradient(135deg, #3b82f6 0%, #93c5fd 100%); bottom: 20px; right: 10%; filter: blur(2px);"></div>
+            <!-- Green triangle shape -->
+            <div style="position: absolute; width: 120px; height: 120px; background: linear-gradient(135deg, #10b981 0%, #a7f3d0 100%); clip-path: polygon(50% 0%, 0% 100%, 100% 100%); top: 40%; left: 15%; filter: blur(2px);"></div>
+            <!-- Orange circle -->
+            <div style="position: absolute; width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #f97316 0%, #fdba74 100%); top: 30%; right: 20%; filter: blur(2px);"></div>
+            <!-- Pink wavy shape -->
+            <div style="position: absolute; width: 200px; height: 60px; background: linear-gradient(135deg, #ec4899 0%, #fbcfe8 100%); border-radius: 30px; bottom: 15%; left: 30%; filter: blur(2px);"></div>
+        </div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <!-- Heading -->
+            <div class="text-center mb-5">
+                <span class="badge bg-primary px-3 py-2 mb-2 rounded-pill">Our Features</span>
+                <h2 class="fw-bold position-relative d-inline-block" style="color: rgb(3, 3, 150);">
+                    Salient Features
+                    <span class="position-absolute" style="height: 4px; width: 50%; background-color: var(--primary-color); bottom: -10px; left: 15%;"></span>
+                </h2>
+                <p class="text-muted mt-3">What makes our school special</p>
+            </div>
+
+            <!-- Scrollable Cards Section with Navigation -->
+            <div class="scroll-container">
+                <button class="scroll-btn left" id="scrollLeft">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="scroll-content" id="scrollContent">
+                    <div class="scroll-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <h5>Trained & Experience Teachers</h5>
+                            <p>Expert educators with proven track records in academic excellence</p>
+                        </div>
+                    </div>
+                    <div class="scroll-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-user-graduate"></i>
+                            <h5>Individual Care & Doubt Clearing Classes</h5>
+                            <p>Personalized attention to ensure every student's academic growth</p>
+                        </div>
+                    </div>
+                    <div class="scroll-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-laptop-code"></i>
+                            <h5>State of Art Smart Classes</h5>
+                            <p>Interactive digital learning environment with cutting-edge technology</p>
+                        </div>
+                    </div>
+                    <div class="scroll-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-comments"></i>
+                            <h5>Fluent Speaking & Abacus</h5>
+                            <p>Comprehensive language skills development and mathematical aptitude training</p>
+                        </div>
+                    </div>
+                    <div class="scroll-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-music"></i>
+                            <h5>Singing, Dancing & Recitation</h5>
+                            <p>Fostering artistic talents through diverse cultural activities</p>
+                        </div>
+                    </div>
+                    <div class="scroll-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-users"></i>
+                            <h5>Regular Parents-Teacher Meeting</h5>
+                            <p>Strong parent-teacher collaboration for student success</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="scroll-btn right" id="scrollRight">
+                    <i class="fas fa-chevron-right"></i>
+                </button>  
+            </div>
+            <!-- Dots Indicator BELOW the cards -->
+            <div class="dots-container"></div>
+        </div>
+    </section>
+
+
+     <!-- Educational Approach Section -->
+     <section class="py-5 educational-approach" style="background: #ffffff;">
+        <div class="container">
+            <!-- Heading -->
+            <div class="d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <span class="badge bg-primary px-3 py-2 mb-2 rounded-pill">Our Methodology</span>
+                    <h2 class="fw-bold position-relative d-inline-block" style="color: rgb(3, 3, 150);">
+                        Our Educational Approach
+                        <span class="position-absolute" style="height: 4px; width: 50%; background-color: var(--primary-color); bottom: -10px; left: 15%;"></span>
+                    </h2>
+                </div>
+                <p class="text-muted m-0">Nurturing well-rounded individuals for future success</p>
+            </div>
+
+            <!-- New Educational Approach with Left Content and Right Image -->
+            <div class="row align-items-center">
+                <!-- Left Column: Image -->
+                <div class="col-lg-5">
+                    <img src="assets/images/lindos niños pequeños leyendo libros.jpg" class="img-fluid rounded-4" alt="Educational Approach" style="width: 100%; height: auto;">
+                </div>
+                
+                <!-- Right Column: Content -->
+                <div class="col-lg-7">
+                    <p style="font-size: 18px; line-height: 1.9;"> 
+                        We provide personalized learning with trained teachers, smart classrooms, and a strong focus on academic and skill development. Through extracurricular activities, we nurture creativity, fitness, and social responsibility. Regular evaluations and parent collaboration ensure progress, while career counseling and behavioral guidance help groom students for future success.
+                    </p>
+                    <h4 class="mt-4 mb-3" style="color: rgb(3, 3, 150);">Key Highlights of Our Educational Approach</h4>
+                    <ul class="list-unstyled" style="font-size: 18px; line-height: 1.9;">
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Academia</strong> – Personalized learning with trained teachers, smart classrooms, and a strong focus on writing, reading, and speech fluency.</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Extracurricular</strong> – Holistic development through activities like singing, dancing, recitation, physical fitness, and social responsibility.</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Evaluation</strong> – Weekly and monthly assessments, along with regular parent meetings to track progress and ensure continuous improvement.</li>
+                        <li class="mb-2"><i class="fas fa-check-circle text-primary me-2"></i> <strong>Grooming</strong> – Career counseling and behavioral guidance to shape confident, well-rounded individuals ready for future success.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us py-5" style="background: #ffffff; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <div class="container">
+            <!-- Heading -->
+            <div class="text-center mb-5">
+                <span class="badge bg-primary px-3 py-2 mb-2 rounded-pill animate__animated animate__fadeIn">Our Strengths</span>
+                <h2 class="fw-bold position-relative d-inline-block" style="color: rgb(3, 3, 150);">
+                    Why Choose Us?
+                    <span class="position-absolute" style="height: 4px; width: 50%; background-color: var(--primary-color); bottom: -10px; left: 25%;"></span>
+                </h2>
+                <p class="text-muted mt-3">Our approach to education is what sets us apart</p>
+            </div>
+
+            <div class="row">
+                <!-- Left Column: Points -->
+                <div class="col-lg-6">
+                    <div class="row row-cols-1 row-cols-md-2 g-4">
+                <!-- Point 1 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="number-circle">1</div>
+                                <h5 class="card-title ms-3 mb-0">Individual Psychology</h5>
+                            </div>
+                            <p class="card-text">We assess a child's psychology to give individual attention while teaching.</p>
+                            <i class="fas fa-brain feature-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Point 2 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="number-circle">2</div>
+                                <h5 class="card-title ms-3 mb-0">Playful Learning</h5>
+                            </div>
+                            <p class="card-text">We teach playfully, so that interest in studies can be created and developed.</p>
+                            <i class="fas fa-puzzle-piece feature-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Point 3 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="number-circle">3</div>
+                                <h5 class="card-title ms-3 mb-0">Comprehensive Assessment</h5>
+                            </div>
+                            <p class="card-text">We assess them through various work-sheets so that they understand and remember their lessons.</p>
+                            <i class="fas fa-clipboard-check feature-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Point 4 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="number-circle">4</div>
+                                <h5 class="card-title ms-3 mb-0">Visual Learning</h5>
+                            </div>
+                            <p class="card-text">Students are shown video clippings of their lessons so that they can enjoy their studies.</p>
+                            <i class="fas fa-film feature-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Point 5 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="number-circle">5</div>
+                                <h5 class="card-title ms-3 mb-0">Value Education</h5>
+                            </div>
+                            <p class="card-text">We teach moral and social values to develop well-rounded individuals.</p>
+                            <i class="fas fa-heart feature-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Point 6 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="number-circle">6</div>
+                                <h5 class="card-title ms-3 mb-0">Environmental Awareness</h5>
+                            </div>
+                            <p class="card-text">We develop a sense of love towards nature and environmental consciousness.</p>
+                            <i class="fas fa-leaf feature-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Point 7 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="number-circle">7</div>
+                                <h5 class="card-title ms-3 mb-0">Physical Education</h5>
+                            </div>
+                            <p class="card-text">Special classes on indoor and outdoor games for physical development.</p>
+                            <i class="fas fa-running feature-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Point 8 -->
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm hover-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="number-circle">8</div>
+                                <h5 class="card-title ms-3 mb-0">Co-curricular Activities</h5>
+                            </div>
+                            <p class="card-text">Students participate in various co-curricular activities to develop their skills.</p>
+                            <i class="fas fa-palette feature-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column: Images -->
+                <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="why-choose-images">
+                        <div class="row g-3">
+                            <!-- Main Image -->
+                            <div class="col-8">
+                                <div class="image-card position-relative overflow-hidden rounded-4 h-100">
+                                    <img src="assets/images/features/WhatsApp Image 2025-03-31 at 2.15.14 PM.jpeg" alt="Smart Classroom" class="img-fluid rounded-4 smart-class-img">
+                                </div>
+                            </div>
+                            <!-- Side Images -->
+                            <div class="col-4 d-flex flex-column justify-content-between">
+                                <div class="image-card position-relative overflow-hidden rounded-4 mb-3">
+                                    <img src="assets/images/features/WhatsApp Image 2025-03-31 at 2.15.15 PM.jpeg" alt="Individual Care" class="img-fluid rounded-4 individual-care-img">
+                                </div>
+                                <div class="image-card position-relative overflow-hidden rounded-4">
+                                    <img src="assets/images/features/Question Character.jpg" alt="Trained Teachers" class="img-fluid rounded-4 trained-teachers-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <!-- FAQs Section -->
+    <section id="faqs" class="py-5 faq-section">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="display-4 fw-bold mb-3">Frequently Asked Questions</h2>
+                    <p class="lead text-muted">Find answers to common questions about our school and programs</p>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <!-- FAQ Item 1 -->
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded faq-item">
+                            <h3 class="accordion-header" id="headingOne">
+                                <button class="accordion-button rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="fas fa-graduation-cap faq-icon"></i>
+                                    <span>What programs does the school offer?</span>
+                                </button>
+                            </h3>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our school offers a comprehensive range of programs including specialized tracks in Technology and Performing Arts. Each program is designed to provide students with both theoretical knowledge and practical skills.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 2 -->
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded faq-item">
+                            <h3 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <i class="fas fa-user-plus faq-icon"></i>
+                                    <span>What are the admission requirements?</span>
+                                </button>
+                            </h3>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Please visit our Admission page.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <!-- FAQ Item 4 -->
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded faq-item">
+                            <h3 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <i class="fas fa-futbol faq-icon"></i>
+                                    <span>What extracurricular activities are available?</span>
+                                </button>
+                            </h3>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We offer a wide range of extracurricular activities including sports teams, drama, music ensembles and various academic clubs. Students are encouraged to participate in activities that align with their interests.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- FAQ Item 5 -->
+                        <div class="accordion-item border-0 mb-3 shadow-sm rounded faq-item">
+                            <h3 class="accordion-header" id="headingFive">
+                                <button class="accordion-button collapsed rounded" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    <i class="fas fa-hands-helping faq-icon"></i>
+                                    <span>How does the school support students with special needs?</span>
+                                </button>
+                            </h3>
+                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our school has a dedicated special education department that provides individualized support plans, resource teachers, and accommodations based on each student's needs. We believe in inclusive education and work closely with families to ensure all students can succeed.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <p class="mb-0">Still have questions? <a href="pages/contact.html" class="btn btn-primary btn-sm ms-2">Contact Us</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> 128-1/B, G.T. Road,(West) Konnagar, Hoogly, Pin - 712235</p>
+                    <p><i class="fas fa-phone"></i> 033 3559 9796</p>
+                    <p><i class="fas fa-envelope"></i> chandrima.sharma79@gmail.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="pages/about.html">About Us</a></li>
+                        <li><a href="pages/admission.html">Admissions</a></li>
+                        <li><a href="pages/academics.html">Academics</a></li>
+                        <li><a href="pages/news-events.html">News and Events</a></li>
+                        <li><a href="pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div class="social-links mb-3">
+                        <a href="https://www.facebook.com/p/SP-Memorial-English-Medium-School-100076190875746/"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/s.p.memorial_school/"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                    <h5>Search Pages</h5>
+                    <div class="search-container">
+                        <form id="searchForm" onsubmit="return handleSearch(event)">
+                            <div class="input-group">
+                                <input type="text" id="searchInput" class="form-control" placeholder="Search for pages..." aria-label="Search">
+                                <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 S.P. Memorial English Medium School. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- Initialize AOS -->
+    <script>
+        // Initialize AOS animation library
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Handle search functionality
+        function handleSearch(event) {
+            event.preventDefault();
+            const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+            
+            // Handle regular page search
+            const pages = {
+                'admission notice': 'pages/admission.html',
+                'fee structure': 'pages/admission.html#fee-structure',
+                'school timing': 'pages/about.html#school-timing',
+                'about': 'pages/about.html',
+                'contact': 'pages/contact.html',
+                'gallery': 'pages/photo-gallery.html',
+                'announcements': 'pages/announcements.html',
+                'academics': 'pages/academics.html',
+                'apply online': 'pages/apply-online.html'
+            };
+            
+            // Check if the search matches any page
+            for (const [pageName, pageUrl] of Object.entries(pages)) {
+                if (pageName.includes(searchInput)) {
+                    window.location.href = pageUrl;
+                    return false;
+                }
+            }
+            
+            // If no match found, alert the user
+            alert('No matching page found. Please try a different search term.');
+            return false;
+        }
+    </script>
+</body>
+</html>
