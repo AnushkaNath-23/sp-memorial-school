@@ -1,1 +1,0 @@
-This directory contains downloadable forms and documents for S.P. Memorial English Medium School.
