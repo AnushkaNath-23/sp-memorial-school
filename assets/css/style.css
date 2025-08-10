@@ -216,6 +216,17 @@ body {
     .navbar-brand {
         margin-left: 0;
     }
+    
+    /* Fix for school name being cropped on mobile */
+    .navbar-brand .d-flex.flex-column span.fw-bold {
+        font-size: 0.9rem;
+        line-height: 1.2;
+        word-wrap: break-word;
+    }
+    
+    .navbar-brand img {
+        height: 60px; /* Slightly smaller logo on mobile */
+    }
 
     .hero h1 {
         font-size: 2rem;
@@ -233,6 +244,19 @@ body {
 
     .nav-link {
         padding: 0.5rem 0.8rem;
+    }
+    
+    /* Further adjustments for very small screens */
+    .navbar-brand .d-flex.flex-column span.fw-bold {
+        font-size: 0.8rem;
+    }
+    
+    .navbar-brand img {
+        height: 50px;
+    }
+    
+    .navbar-brand .d-flex.flex-column p.fs-6 {
+        font-size: 0.7rem !important;
     }
 
     .hero {
