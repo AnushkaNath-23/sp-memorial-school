@@ -249,6 +249,24 @@ body {
     }
 }
 
+/* Media query for mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .contact-info {
+        display: none !important; /* Hide contact info on mobile */
+    }
+    /* Hide the entire announcements section on mobile */
+    section.announcements.fixed-top, 
+    .announcements.fixed-top,
+    .announcements {
+        display: none !important;
+    }
+    .navbar.fixed-top {
+        top: 0 !important; /* Reset navbar position to top of viewport */
+    }
+    body {
+        padding-top: 56px !important; /* Adjust body padding to account for navbar height only */
+    }
+}
 @keyframes float {
     0% {
         transform: translateY(0px);
