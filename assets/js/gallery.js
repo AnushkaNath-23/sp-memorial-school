@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
   galleryContainer.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div></div>';
   
   // Fetch images from the API
-  fetch('/api/gallery')
+  fetch('./api/gallery')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -77,12 +77,12 @@ function createGalleryItem(imageName, category) {
   
   galleryItem.innerHTML = `
     <div class="gallery-wrap">
-      <img src="/uploads/gallery/${imageName}" class="img-fluid" alt="Gallery Image">
+      <img src="./uploads/gallery/${imageName}" class="img-fluid" alt="Gallery Image">
       <div class="gallery-info">
         <h4>${formatImageName(imageName)}</h4>
         <p>${capitalizeFirstLetter(category)}</p>
         <div class="gallery-links">
-          <a href="/uploads/gallery/${imageName}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="${formatImageName(imageName)}"><i class="fas fa-plus"></i></a>
+          <a href="./uploads/gallery/${imageName}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="${formatImageName(imageName)}"><i class="fas fa-plus"></i></a>
         </div>
       </div>
     </div>
