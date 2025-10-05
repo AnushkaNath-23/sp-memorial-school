@@ -46,19 +46,31 @@ document.addEventListener('DOMContentLoaded', function() {
         // No notices found
         const message = category === 'admission' ? 
           `` : 
-          'No announcements available at this time.';
+          'There is no announcement at this time.';
         
         announcementsContainer.innerHTML = `
-          <div class="alert alert-info" role="alert">
-            <i class="fas fa-info-circle"></i> ${message}
+          <div class="alert alert-info text-center" role="alert">
+            <i class="fas fa-info-circle me-2"></i> ${message}
           </div>
         `;
       }
     })
     .catch(error => {
       console.error('Error fetching notices:', error);
-      // Silently handle errors - no error message displayed
-      announcementsContainer.innerHTML = '';
+      // Show "no announcements" message when API fails
+      const message = category === 'admission' ? 
+        `` : 
+        'There is no announcement at this time.';
+      
+      if (message) {
+        announcementsContainer.innerHTML = `
+          <div class="alert alert-info text-center" role="alert">
+            <i class="fas fa-info-circle me-2"></i> ${message}
+          </div>
+        `;
+      } else {
+        announcementsContainer.innerHTML = '';
+      }
     });
 });
 
