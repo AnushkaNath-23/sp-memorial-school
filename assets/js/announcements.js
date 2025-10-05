@@ -57,11 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .catch(error => {
       console.error('Error fetching notices:', error);
-      announcementsContainer.innerHTML = `
-        <div class="alert alert-danger" role="alert">
-          <i class="fas fa-exclamation-triangle"></i> Unable to load announcements. Please try again later.
-        </div>
-      `;
+      // Silently handle errors - no error message displayed
+      announcementsContainer.innerHTML = '';
     });
 });
 
