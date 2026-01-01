@@ -1,6 +1,9 @@
 // Modern JavaScript features for S.P. Memorial School website
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize hamburger menu functionality
+    initHamburgerMenu();
+    
     // Initialize FAQ interactions
     initFaqInteractions();
     // Show loading animation
@@ -366,6 +369,47 @@ document.addEventListener('DOMContentLoaded', function() {
             form.classList.add('was-validated');
         });
     });
+
+    // Hamburger menu functionality
+    function initHamburgerMenu() {
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
+        
+        if (!navbarToggler || !navbarCollapse) return;
+        
+        // Toggle menu when hamburger is clicked
+        navbarToggler.addEventListener('click', function() {
+            navbarCollapse.classList.toggle('show');
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInside = navbarToggler.contains(event.target) || navbarCollapse.contains(event.target);
+            
+            if (!isClickInside && navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+            }
+        });
+        
+        // Close menu when window is resized to desktop view
+        window.addEventListener('resize', function() {
+            if (window.innerWidth >= 992 && navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+            }
+        });
+        
+        // Close menu when a nav link is clicked
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 992) {
+                    navbarCollapse.classList.remove('show');
+                }
+            });
+        });
+    }
+
+
 
     // Add animation on scroll
     const animateOnScroll = function() {
