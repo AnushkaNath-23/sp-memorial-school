@@ -1,6 +1,25 @@
 // Modern JavaScript features for S.P. Memorial School website
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Sync header heights for fixed positioning
+    function syncHeaderHeights() {
+        const announcements = document.querySelector('.announcements');
+        const navbar = document.querySelector('.navbar');
+        
+        if (announcements && navbar) {
+            const announcementHeight = announcements.offsetHeight;
+            navbar.style.top = `${announcementHeight}px`;
+            
+            const navbarHeight = navbar.offsetHeight;
+            document.body.style.paddingTop = `${announcementHeight + navbarHeight}px`;
+        }
+    }
+
+    // Call on load, resize, and scroll
+    syncHeaderHeights();
+    window.addEventListener('resize', syncHeaderHeights);
+    // Also call when announcements might change height (e.g. after updateAnnouncement)
+    
     // Initialize hamburger menu functionality
     initHamburgerMenu();
     
@@ -80,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p class="mb-0">${announcement.content}</p>
                 `;
                 announcementContainer.style.opacity = '1';
+                syncHeaderHeights(); // Sync heights after content change
             }, 500);
             
             currentAnnouncement = (currentAnnouncement + 1) % announcements.length;
@@ -93,67 +113,25 @@ document.addEventListener('DOMContentLoaded', function() {
         const dotsContainer = document.querySelector(".dots-container");
         const totalCards = scrollCards.length;
         let currentIndex = 0;
-        const cardsToShow = 3; // Show 3 cards at once
-    
-        // Initially hide all cards
-        scrollCards.forEach((card) => {
-            card.style.display = 'none';
-        });
         
-        // Show initial set of cards (first 3)
-        for (let i = 0; i < cardsToShow; i++) {
-            if (i < totalCards) {
-                scrollCards[i].style.display = 'block';
-                scrollCards[i].style.width = `calc((100% / ${cardsToShow}) - 30px)`;
-                scrollCards[i].style.margin = '0 15px';
-                setTimeout(() => {
-                    scrollCards[i].style.opacity = '1';
-                }, 50);
-            }
+        function getCardsToShow() {
+            if (window.innerWidth < 768) return 1;
+            if (window.innerWidth < 992) return 2;
+            return 3;
         }
     
-        // Clear and create dot indicators
-        if (dotsContainer) {
-            dotsContainer.innerHTML = '';
+        function initFeatures() {
+            const cardsToShow = getCardsToShow();
             
-            // Create dots for each possible starting position
-            const totalPositions = totalCards - cardsToShow + 1;
-            for (let i = 0; i < totalPositions; i++) {
-                const dot = document.createElement("div");
-                dot.classList.add("dot");
-                if (i === 0) dot.classList.add("active");
-                dot.setAttribute("data-index", i);
-                dot.addEventListener("click", () => {
-                    showCard(i);
-                });
-                dotsContainer.appendChild(dot);
-            }
-        }
-    
-        function updateDots() {
-            const dots = document.querySelectorAll(".dot");
-            dots.forEach((dot, i) => {
-                dot.classList.toggle("active", i === currentIndex);
-            });
-        }
-    
-        function showCard(newIndex) {
-            // Ensure the index is within bounds
-            if (newIndex < 0) newIndex = totalCards - cardsToShow;
-            if (newIndex > totalCards - cardsToShow) newIndex = 0;
-            
-            // Hide all cards with fade out effect
-            scrollCards.forEach(card => {
-                card.style.opacity = '0';
-                // Remove timeout and make change immediate
+            // Initially hide all cards
+            scrollCards.forEach((card) => {
                 card.style.display = 'none';
+                card.style.opacity = '0';
             });
             
-            // Show the current group of cards with fade in effect
-            // Remove timeout and make change immediate
-            // Calculate which cards to show based on the new index
+            // Show current group of cards
             for (let i = 0; i < cardsToShow; i++) {
-                const cardIndex = newIndex + i;
+                const cardIndex = currentIndex + i;
                 if (cardIndex < totalCards) {
                     scrollCards[cardIndex].style.display = 'block';
                     scrollCards[cardIndex].style.width = `calc((100% / ${cardsToShow}) - 30px)`;
@@ -161,30 +139,35 @@ document.addEventListener('DOMContentLoaded', function() {
                     scrollCards[cardIndex].style.opacity = '1';
                 }
             }
-            setTimeout(() => {
-                // Calculate which cards to show based on the new index
-                for (let i = 0; i < cardsToShow; i++) {
-                    const cardIndex = newIndex + i;
-                    if (cardIndex < totalCards) {
-                        scrollCards[cardIndex].style.display = 'block';
-                        scrollCards[cardIndex].style.width = `calc((100% / ${cardsToShow}) - 30px)`;
-                        scrollCards[cardIndex].style.margin = '0 15px';
-                        setTimeout(() => {
-                            scrollCards[cardIndex].style.opacity = '1';
-                        }, 50);
-                    }
+        
+            // Clear and create dot indicators
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                
+                // Create dots for each possible starting position
+                const totalPositions = totalCards - cardsToShow + 1;
+                for (let i = 0; i < totalPositions; i++) {
+                    const dot = document.createElement("div");
+                    dot.classList.add("dot");
+                    if (i === currentIndex) dot.classList.add("active");
+                    dot.setAttribute("data-index", i);
+                    dot.addEventListener("click", () => {
+                        showCard(i);
+                    });
+                    dotsContainer.appendChild(dot);
                 }
-            }, 300);
+            }
+        }
+
+        function showCard(newIndex) {
+            const cardsToShow = getCardsToShow();
+            // Ensure the index is within bounds
+            if (newIndex < 0) newIndex = totalCards - cardsToShow;
+            if (newIndex > totalCards - cardsToShow) newIndex = 0;
             
             currentIndex = newIndex;
-            updateDots();
+            initFeatures();
         }
-    
-        // Add initial opacity to all cards for transition effect
-        scrollCards.forEach(card => {
-            // Removed transition property
-            card.style.opacity = '1';
-        });
     
         // Navigation buttons
         const leftBtn = document.getElementById("scrollLeft");
@@ -202,6 +185,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     
+        // Initialize on load and resize
+        initFeatures();
+        window.addEventListener('resize', initFeatures);
+    
         // Add keyboard navigation
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowLeft') {
@@ -210,9 +197,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 showCard(currentIndex + 1);
             }
         });
-    
-        // Auto-scroll functionality removed as per requirement
-        // Manual navigation is still available through the buttons and dots
     }
 
     // FAQ Section Interactions
