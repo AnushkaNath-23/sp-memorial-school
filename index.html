@@ -156,87 +156,255 @@
 
 
     <!-- Salient Features --> 
-    <section class="quick-links py-5" style="background-color: #f8f8f5; position: relative; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.15);">
-        <!-- Colorful texture elements -->
-        <div style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; overflow: hidden; opacity: 0.4; z-index: 0;">
-            <!-- Purple circle -->
-            <div style="position: absolute; width: 150px; height: 150px; border-radius: 50%; background: linear-gradient(135deg, #8b5cf6 0%, #c4b5fd 100%); top: -30px; left: 5%; filter: blur(2px);"></div>
-            <!-- Blue square -->
-            <div style="position: absolute; width: 100px; height: 100px; transform: rotate(45deg); background: linear-gradient(135deg, #3b82f6 0%, #93c5fd 100%); bottom: 20px; right: 10%; filter: blur(2px);"></div>
-            <!-- Green triangle shape -->
-            <div style="position: absolute; width: 120px; height: 120px; background: linear-gradient(135deg, #10b981 0%, #a7f3d0 100%); clip-path: polygon(50% 0%, 0% 100%, 100% 100%); top: 40%; left: 15%; filter: blur(2px);"></div>
-            <!-- Orange circle -->
-            <div style="position: absolute; width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, #f97316 0%, #fdba74 100%); top: 30%; right: 20%; filter: blur(2px);"></div>
-            <!-- Pink wavy shape -->
-            <div style="position: absolute; width: 200px; height: 60px; background: linear-gradient(135deg, #ec4899 0%, #fbcfe8 100%); border-radius: 30px; bottom: 15%; left: 30%; filter: blur(2px);"></div>
+    <section class="salient-features py-5" style="background-color: #f0f7ff; position: relative; overflow: hidden; box-shadow: inset 0 0 50px rgba(0,0,0,0.03);">
+        <!-- Playful Background Elements -->
+        <div class="bg-decorations" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; z-index: 0; opacity: 0.6;">
+            <div style="position: absolute; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,193,7,0.2) 0%, transparent 70%); top: -100px; left: -100px;"></div>
+            <div style="position: absolute; width: 250px; height: 250px; background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, transparent 70%); bottom: -50px; right: -50px;"></div>
+            <div style="position: absolute; width: 150px; height: 150px; background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 70%); top: 50%; left: 10%;"></div>
+            <div style="position: absolute; width: 100px; height: 100px; background: rgba(236, 72, 153, 0.1); border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; top: 20%; right: 15%; animation: rotate 20s linear infinite;"></div>
         </div>
+
         <div class="container" style="position: relative; z-index: 1;">
             <!-- Heading -->
-            <div class="text-center mb-5">
-                <span class="badge bg-primary px-3 py-2 mb-2 rounded-pill">Our Features</span>
-                <h2 class="fw-bold position-relative d-inline-block" style="color: rgb(3, 3, 150);">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="badge bg-warning text-dark px-4 py-2 mb-3 rounded-pill shadow-sm" style="font-size: 0.9rem; letter-spacing: 1px; font-weight: 700;">OUR SPECIALTIES</span>
+                <h2 class="display-5 fw-bold mb-3" style="color: rgb(3, 3, 150);">
                     Salient Features
-                    <span class="position-absolute" style="height: 4px; width: 50%; background-color: var(--primary-color); bottom: -10px; left: 15%;"></span>
                 </h2>
-                <p class="text-muted mt-3">What makes our school special</p>
+                <p class="lead text-muted mx-auto" style="max-width: 600px;">What makes S.P. Memorial the perfect choice for your child's bright future</p>
+                <div class="mx-auto mt-3" style="height: 5px; width: 60px; background: linear-gradient(90deg, #ffc107, #2563eb); border-radius: 5px;"></div>
             </div>
 
-            <!-- Scrollable Cards Section with Navigation -->
-            <div class="scroll-container">
-                <button class="scroll-btn left" id="scrollLeft">
+            <div class="features-scroll-wrapper" style="position: relative;">
+                <!-- Navigation Arrows -->
+                <button class="scroll-arrow left-arrow" id="scrollLeft" aria-label="Scroll Left">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <div class="scroll-content" id="scrollContent">
-                    <div class="scroll-card">
-                        <div class="card-body text-center">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                            <h5>Trained & Experience Teachers</h5>
-                            <p>Expert educators with proven track records in academic excellence</p>
+                <button class="scroll-arrow right-arrow" id="scrollRight" aria-label="Scroll Right">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <div class="features-scroll-content" id="featuresScroll">
+                    <!-- Feature 1 -->
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-card h-100 p-4 text-center">
+                            <div class="icon-wrapper icon-purple mb-4">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Trained & Experience Teachers</h4>
+                            <p class="text-muted">Expert educators with proven track records in academic excellence and child psychology.</p>
+                            <div class="card-wave wave-purple"></div>
                         </div>
                     </div>
-                    <div class="scroll-card">
-                        <div class="card-body text-center">
-                            <i class="fas fa-user-graduate"></i>
-                            <h5>Individual Care & Doubt Clearing Classes</h5>
-                            <p>Personalized attention to ensure every student's academic growth</p>
+
+                    <!-- Feature 2 -->
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-card h-100 p-4 text-center">
+                            <div class="icon-wrapper icon-blue mb-4">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Individual Care & Doubts</h4>
+                            <p class="text-muted">Personalized attention and special doubt-clearing sessions to ensure every student's growth.</p>
+                            <div class="card-wave wave-blue"></div>
                         </div>
                     </div>
-                    <div class="scroll-card">
-                        <div class="card-body text-center">
-                            <i class="fas fa-laptop-code"></i>
-                            <h5>State of Art Smart Classes</h5>
-                            <p>Interactive digital learning environment with cutting-edge technology</p>
+
+                    <!-- Feature 3 -->
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-card h-100 p-4 text-center">
+                            <div class="icon-wrapper icon-green mb-4">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Smart Classes</h4>
+                            <p class="text-muted">Interactive digital learning environment with cutting-edge technology for better visualization.</p>
+                            <div class="card-wave wave-green"></div>
                         </div>
                     </div>
-                    <div class="scroll-card">
-                        <div class="card-body text-center">
-                            <i class="fas fa-comments"></i>
-                            <h5>Fluent Speaking & Abacus</h5>
-                            <p>Comprehensive language skills development and mathematical aptitude training</p>
+
+                    <!-- Feature 4 -->
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="feature-card h-100 p-4 text-center">
+                            <div class="icon-wrapper icon-orange mb-4">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Fluent Speaking & Abacus</h4>
+                            <p class="text-muted">Comprehensive language skills development and mathematical aptitude through fun activities.</p>
+                            <div class="card-wave wave-orange"></div>
                         </div>
                     </div>
-                    <div class="scroll-card">
-                        <div class="card-body text-center">
-                            <i class="fas fa-music"></i>
-                            <h5>Singing, Dancing & Recitation</h5>
-                            <p>Fostering artistic talents through diverse cultural activities</p>
+
+                    <!-- Feature 5 -->
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="500">
+                        <div class="feature-card h-100 p-4 text-center">
+                            <div class="icon-wrapper icon-pink mb-4">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Arts, Dance & Music</h4>
+                            <p class="text-muted">Fostering artistic talents through singing, dancing, recitation and creative workshops.</p>
+                            <div class="card-wave wave-pink"></div>
                         </div>
                     </div>
-                    <div class="scroll-card">
-                        <div class="card-body text-center">
-                            <i class="fas fa-users"></i>
-                            <h5>Regular Parents-Teacher Meeting</h5>
-                            <p>Strong parent-teacher collaboration for student success</p>
+
+                    <!-- Feature 6 -->
+                    <div class="feature-item" data-aos="fade-up" data-aos-delay="600">
+                        <div class="feature-card h-100 p-4 text-center">
+                            <div class="icon-wrapper icon-cyan mb-4">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4 class="fw-bold mb-3">Regular PTMs</h4>
+                            <p class="text-muted">Strong parent-teacher collaboration for holistic development and monitoring of student success.</p>
+                            <div class="card-wave wave-cyan"></div>
                         </div>
                     </div>
                 </div>
-                <button class="scroll-btn right" id="scrollRight">
-                    <i class="fas fa-chevron-right"></i>
-                </button>  
             </div>
-            <!-- Dots Indicator BELOW the cards -->
-            <div class="dots-container"></div>
         </div>
+
+        <style>
+            .features-scroll-wrapper {
+                margin: 0 -15px;
+                padding: 10px 15px;
+            }
+            .features-scroll-content {
+                display: flex;
+                gap: 25px;
+                overflow-x: auto;
+                padding: 20px 10px 40px;
+                scroll-snap-type: x mandatory;
+                -webkit-overflow-scrolling: touch;
+            }
+            /* Hide default scrollbar but show custom one */
+            .features-scroll-content::-webkit-scrollbar {
+                height: 10px;
+            }
+            .features-scroll-content::-webkit-scrollbar-track {
+                background: rgba(0, 0, 0, 0.05);
+                border-radius: 10px;
+            }
+            .features-scroll-content::-webkit-scrollbar-thumb {
+                background: linear-gradient(90deg, #ffc107, #2563eb);
+                border-radius: 10px;
+                border: 2px solid #f0f7ff;
+            }
+            .features-scroll-content::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(90deg, #2563eb, #ffc107);
+            }
+            
+            /* Navigation Arrows Styling */
+            .scroll-arrow {
+                position: absolute;
+                top: 45%;
+                transform: translateY(-50%);
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: white;
+                border: none;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                color: #2563eb;
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                z-index: 10;
+                transition: all 0.3s ease;
+            }
+            .scroll-arrow:hover {
+                background: #2563eb;
+                color: white;
+                transform: translateY(-50%) scale(1.1);
+            }
+            .left-arrow { left: 0; }
+            .right-arrow { right: 0; }
+
+            @media (max-width: 992px) {
+                .left-arrow { left: 5px; }
+                .right-arrow { right: 5px; }
+            }
+            @media (max-width: 768px) {
+                .scroll-arrow { display: none; } /* Hide arrows on small mobile for touch-first scroll */
+            }
+            
+            /* Card item styling for scroll */
+            .feature-item {
+                flex: 0 0 320px;
+                scroll-snap-align: center;
+                height: auto;
+            }
+            
+            @media (max-width: 576px) {
+                .feature-item {
+                    flex: 0 0 280px;
+                }
+            }
+
+            .feature-card {
+                background: #ffffff;
+                border-radius: 24px;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+                transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+                border: 1px solid rgba(0,0,0,0.02);
+            }
+            .feature-card:hover {
+                transform: translateY(-12px);
+                box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1) !important;
+            }
+            .icon-wrapper {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 2.2rem;
+                border-radius: 20px;
+                transition: all 0.4s ease;
+            }
+            .feature-card:hover .icon-wrapper {
+                transform: scale(1.1) rotate(5deg);
+                border-radius: 50%;
+            }
+            
+            /* Icon Colors */
+            .icon-purple { background: #f3e8ff; color: #8b5cf6; }
+            .icon-blue { background: #dbeafe; color: #3b82f6; }
+            .icon-green { background: #d1fae5; color: #10b981; }
+            .icon-orange { background: #fef3c7; color: #f59e0b; }
+            .icon-pink { background: #fce7f3; color: #ec4899; }
+            .icon-cyan { background: #cffafe; color: #06b6d4; }
+
+            /* Decorative Waves */
+            .card-wave {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 6px;
+                z-index: -1;
+                transition: all 0.4s ease;
+            }
+            .wave-purple { background: #8b5cf6; }
+            .wave-blue { background: #3b82f6; }
+            .wave-green { background: #10b981; }
+            .wave-orange { background: #f59e0b; }
+            .wave-pink { background: #ec4899; }
+            .wave-cyan { background: #06b6d4; }
+
+            .feature-card:hover .card-wave {
+                height: 100%;
+                opacity: 0.03;
+            }
+
+            @keyframes rotate {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+        </style>
     </section>
 
 
