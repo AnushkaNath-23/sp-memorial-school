@@ -106,98 +106,50 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Salient Features Scrolling Functionality
-    const scrollContent = document.getElementById("scrollContent");
-    if (scrollContent) {
-        const scrollCards = document.querySelectorAll(".scroll-card");
-        const dotsContainer = document.querySelector(".dots-container");
-        const totalCards = scrollCards.length;
-        let currentIndex = 0;
-        
-        function getCardsToShow() {
-            if (window.innerWidth < 768) return 1;
-            if (window.innerWidth < 992) return 2;
-            return 3;
-        }
-    
-        function initFeatures() {
-            const cardsToShow = getCardsToShow();
-            
-            // Initially hide all cards
-            scrollCards.forEach((card) => {
-                card.style.display = 'none';
-                card.style.opacity = '0';
-            });
-            
-            // Show current group of cards
-            for (let i = 0; i < cardsToShow; i++) {
-                const cardIndex = currentIndex + i;
-                if (cardIndex < totalCards) {
-                    scrollCards[cardIndex].style.display = 'block';
-                    scrollCards[cardIndex].style.width = `calc((100% / ${cardsToShow}) - 30px)`;
-                    scrollCards[cardIndex].style.margin = '0 15px';
-                    scrollCards[cardIndex].style.opacity = '1';
-                }
-            }
-        
-            // Clear and create dot indicators
-            if (dotsContainer) {
-                dotsContainer.innerHTML = '';
-                
-                // Create dots for each possible starting position
-                const totalPositions = totalCards - cardsToShow + 1;
-                for (let i = 0; i < totalPositions; i++) {
-                    const dot = document.createElement("div");
-                    dot.classList.add("dot");
-                    if (i === currentIndex) dot.classList.add("active");
-                    dot.setAttribute("data-index", i);
-                    dot.addEventListener("click", () => {
-                        showCard(i);
-                    });
-                    dotsContainer.appendChild(dot);
-                }
-            }
-        }
+    // Salient Features Horizontal Scroll Arrows & Loop
+    const featuresScroll = document.getElementById('featuresScroll');
+    const leftArrow = document.getElementById('scrollLeft');
+    const rightArrow = document.getElementById('scrollRight');
 
-        function showCard(newIndex) {
-            const cardsToShow = getCardsToShow();
-            // Ensure the index is within bounds
-            if (newIndex < 0) newIndex = totalCards - cardsToShow;
-            if (newIndex > totalCards - cardsToShow) newIndex = 0;
-            
-            currentIndex = newIndex;
-            initFeatures();
-        }
-    
-        // Navigation buttons
-        const leftBtn = document.getElementById("scrollLeft");
-        const rightBtn = document.getElementById("scrollRight");
-    
-        if (leftBtn) {
-            leftBtn.addEventListener("click", function() {
-                showCard(currentIndex - 1);
-            });
-        }
-    
-        if (rightBtn) {
-            rightBtn.addEventListener("click", function() {
-                showCard(currentIndex + 1);
-            });
-        }
-    
-        // Initialize on load and resize
-        initFeatures();
-        window.addEventListener('resize', initFeatures);
-    
-        // Add keyboard navigation
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'ArrowLeft') {
-                showCard(currentIndex - 1);
-            } else if (e.key === 'ArrowRight') {
-                showCard(currentIndex + 1);
+    if (featuresScroll && leftArrow && rightArrow) {
+        const scrollAmount = 350; 
+
+        const scrollRight = () => {
+            const isAtEnd = featuresScroll.scrollLeft + featuresScroll.clientWidth >= featuresScroll.scrollWidth - 50;
+            if (isAtEnd) {
+                featuresScroll.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                featuresScroll.scrollBy({ left: scrollAmount, behavior: 'smooth' });
             }
-        });
+        };
+
+        const scrollLeft = () => {
+            const isAtStart = featuresScroll.scrollLeft <= 50;
+            if (isAtStart) {
+                featuresScroll.scrollTo({ left: featuresScroll.scrollWidth, behavior: 'smooth' });
+            } else {
+                featuresScroll.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            }
+        };
+
+        rightArrow.addEventListener('click', scrollRight);
+        leftArrow.addEventListener('click', scrollLeft);
+
+        // Auto-scroll loop
+        let autoScrollInterval = setInterval(scrollRight, 5000);
+
+        // Pause auto-scroll on hover or touch
+        const pauseScroll = () => clearInterval(autoScrollInterval);
+        const resumeScroll = () => {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = setInterval(scrollRight, 5000);
+        };
+
+        featuresScroll.parentElement.addEventListener('mouseenter', pauseScroll);
+        featuresScroll.parentElement.addEventListener('mouseleave', resumeScroll);
+        featuresScroll.parentElement.addEventListener('touchstart', pauseScroll);
     }
+
 
     // FAQ Section Interactions
     function initFaqInteractions() {
