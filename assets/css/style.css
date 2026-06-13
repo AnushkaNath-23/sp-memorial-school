@@ -60,11 +60,27 @@ body {
 }
 
 
+/* Responsive Page Header */
+.page-header h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem) !important;
+    font-weight: 700;
+}
+
+.page-header .lead {
+    font-size: clamp(1rem, 2vw, 1.4rem) !important;
+}
+
+/* Fix smudged-img overflow by adding container padding */
+.about-content .col-md-6 {
+    padding: 20px; /* Space for the smudged shadow */
+}
+
 .smudged-img {
-    width: 400px;
+    max-width: 400px;
+    width: 100%;
     height: auto;
-    box-shadow: 0px 0px 30px 20px rgba(255, 255, 255, 0.7);
-    border-radius: 10px; /* Optional: for rounded corners */
+    box-shadow: 0px 0px 30px 15px rgba(255, 255, 255, 0.7); /* Reduced spread slightly */
+    border-radius: 10px;
     margin: 0 auto;
     display: block;
 }
@@ -90,7 +106,14 @@ body {
 
 .navbar-brand {
     font-weight: 700;
-    margin-left: -50px; 
+    margin-left: 0; /* Removed negative margin to fix alignment and hamburger visibility */
+}
+
+/* Ensure toggler is visible and has enough space */
+.navbar-toggler {
+    border-color: rgba(0,0,0,0.1);
+    padding: 0.5rem;
+    z-index: 1050;
 }
 
 /* Navigation menu alignment and styling */
@@ -131,14 +154,24 @@ body {
     gap: 10px; /* Add spacing between nav items */
 }
 
-/* Modern Hero Section */
+/* Enhanced Navbar Toggler */
+.navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid var(--primary-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25);
+}
+
+/* Fix Hero Background Cropping */
 .hero {
-    background: url('https://i.pinimg.com/736x/44/9a/44/449a44586e4060889eda1eb2c6a93462.jpg') no-repeat center center;
-    background-size: cover;
-    background-attachment: scroll; /* Allows scrolling */
-    position: relative; /* Ensure pseudo-element positioning works */
-    padding: 80px 0;
-    color: white; /* Ensures text is readable */
+    background: url('https://i.pinimg.com/736x/44/9a/44/449a44586e4060889eda1eb2c6a93462.jpg') no-repeat center center/cover;
+    position: relative;
+    padding: clamp(40px, 10vh, 100px) 0;
+    color: white;
+    background-attachment: scroll; /* Better mobile support than fixed/parallax */
 }
 
 /* Optional Overlay for Styling */
@@ -238,14 +271,20 @@ body {
 
     .navbar-brand {
         margin-left: 0;
+        max-width: 75%; /* Ensure space for hamburger */
+        overflow: hidden;
     }
 
     .navbar-brand img {
-        height: 60px;
+        height: 55px;
     }
 
     .navbar-brand span {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     /* Ensure proper positioning and visibility */
@@ -301,11 +340,11 @@ body {
     }
 
     .navbar-brand img {
-        height: 50px;
+        height: 45px;
     }
 
     .navbar-brand span {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
     }
 
     .hero {
@@ -740,6 +779,33 @@ footer {
     }
 }
 
+/* About Page Specific Tweaks */
+.about-content h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.about-content p, .about-content ul {
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+@media (max-width: 768px) {
+    .about-content h2 {
+        font-size: 1.8rem;
+    }
+    
+    .about-content p, .about-content ul {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    .smudged-img {
+        box-shadow: 0px 0px 15px 10px rgba(255, 255, 255, 0.7);
+        max-width: 300px;
+    }
+}
+
 /* Loading Animation */
 .loading {
     position: fixed;
@@ -830,8 +896,9 @@ footer {
 
 .smart-class-img {
     width: 100%;
-    height: 520px; /* Adjust as needed */
-    object-fit: cover;
+    height: 520px;
+    object-fit: contain; /* Changed from cover to avoid cropping */
+    background: #f8f9fa; /* Background to fill space if image is smaller */
     border-radius: 12px;
 }
 
@@ -839,8 +906,18 @@ footer {
 .trained-teachers-img {
     width: 100%;
     height: 250px;
-    object-fit: cover;
+    object-fit: contain; /* Changed from cover to avoid cropping */
+    background: #f8f9fa;
     border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+    .smart-class-img,
+    .individual-care-img,
+    .trained-teachers-img {
+        height: auto; /* Allow natural height on mobile */
+        max-height: 400px;
+    }
 }
 
 .col-4.d-flex.flex-column {

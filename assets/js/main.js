@@ -313,35 +313,48 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (!navbarToggler || !navbarCollapse) return;
         
-        // Toggle menu when hamburger is clicked
-        navbarToggler.addEventListener('click', function() {
-            navbarCollapse.classList.toggle('show');
+        // Use Bootstrap's Collapse instance if possible for better control
+        let bsCollapse = null;
+        if (typeof bootstrap !== 'undefined') {
+            bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+        }
+
+        // Close menu when a nav link or dropdown item is clicked
+        const menuLinks = document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle), .navbar-nav .dropdown-item');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth < 992 && navbarCollapse.classList.contains('show')) {
+                    if (bsCollapse) {
+                        bsCollapse.hide();
+                    } else {
+                        navbarCollapse.classList.remove('show');
+                    }
+                }
+            });
         });
-        
+
         // Close menu when clicking outside
         document.addEventListener('click', function(event) {
             const isClickInside = navbarToggler.contains(event.target) || navbarCollapse.contains(event.target);
             
             if (!isClickInside && navbarCollapse.classList.contains('show')) {
-                navbarCollapse.classList.remove('show');
+                if (bsCollapse) {
+                    bsCollapse.hide();
+                } else {
+                    navbarCollapse.classList.remove('show');
+                }
             }
         });
         
         // Close menu when window is resized to desktop view
         window.addEventListener('resize', function() {
             if (window.innerWidth >= 992 && navbarCollapse.classList.contains('show')) {
-                navbarCollapse.classList.remove('show');
-            }
-        });
-        
-        // Close menu when a nav link is clicked
-        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth < 992) {
+                if (bsCollapse) {
+                    bsCollapse.hide();
+                } else {
                     navbarCollapse.classList.remove('show');
                 }
-            });
+            }
         });
     }
 
