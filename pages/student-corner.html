@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Student Corner - S.P. Memorial English Medium School</title>
+    <link rel="stylesheet" href="/assets/css/style.css?v=1.3">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, rgb(3, 3, 150) 0%, #2563eb 100%);
+            color: white;
+            padding: 60px 0 40px;
+            margin-top: 80px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+
+        .nav-tabs {
+            border-bottom: 2px solid #e5e7eb;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            color: #666;
+            border: none;
+            padding: 12px 24px;
+            font-weight: 600;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover {
+            color: rgb(3, 3, 150);
+            border-bottom-color: rgb(3, 3, 150);
+        }
+
+        .nav-link.active {
+            color: white;
+            background-color: rgb(3, 3, 150);
+            border-radius: 8px 8px 0 0;
+            border-bottom: 3px solid rgb(3, 3, 150);
+        }
+
+        .tab-content {
+            margin-top: 30px;
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 25px;
+        }
+
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0,0,0,0.15);
+        }
+
+        .student-artwork {
+            position: relative;
+            width: 100%;
+            height: 280px;
+            background: #f3f4f6;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .student-artwork img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .artwork-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(3, 3, 150, 0.9);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .student-info {
+            padding: 20px;
+        }
+
+        .student-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: rgb(3, 3, 150);
+            margin-bottom: 5px;
+        }
+
+        .student-class {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .student-content {
+            color: #555;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            max-height: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .read-more {
+            color: rgb(3, 3, 150);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .filter-section {
+            margin: 20px 0;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid #e5e7eb;
+            color: #666;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: rgb(3, 3, 150);
+            color: white;
+            border-color: rgb(3, 3, 150);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+
+        .section-heading {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: rgb(3, 3, 150);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-heading i {
+            margin-right: 15px;
+            font-size: 1.6rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-link {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            .student-artwork {
+                height: 200px;
+            }
+        }
+
+        /* Modal Styles */
+        .story-modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            overflow: auto;
+        }
+
+        .story-modal.show {
+            display: block;
+        }
+
+        .modal-content-wrapper {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 15px;
+        }
+
+        .modal-header h3 {
+            color: rgb(3, 3, 150);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        .modal-close {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .modal-close:hover {
+            color: #000;
+        }
+
+        .story-pages-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .story-page {
+            width: 100%;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .story-page img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            max-height: 600px;
+            object-fit: contain;
+        }
+
+        .page-number {
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Announcements Section at the Top -->
+    <section class="announcements py-2 bg-primary text-white text-center fixed-top">
+        <div class="container-fluid">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+                <p class="contact-info mb-0">
+                    <i class="fas fa-phone"></i> 033 3559 9796 
+                    <i class="fas fa-envelope ms-3"></i> chandrima.sharma79@gmail.com 
+                    <i class="fas fa-map-marker-alt ms-3"></i> 128-1/B, G.T. Road, (West) Konnagar, Hoogly, Pin - 712235
+                </p>
+                <div class="announcement-box text-dark text-center p-2">
+                    <strong>New Academic Year 2026-27</strong> <br>
+                    Admissions open for all classes. 
+                    <a href="admission.html" class="btn btn-warning btn-sm ms-2 btn-float">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/index.html">
+                <img src="/assets/images/logo.jpeg" alt="School Logo" height="80" class="me-2">
+                <div class="d-flex flex-column">
+                    <span class="fw-bold">S.P. Memorial English Medium School</span>
+                    <p class="fs-6 text-muted mb-0">ICSE Curriculum</p>
+                </div>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="admissionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Admission
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="admissionDropdown">
+                            <li><a class="dropdown-item" href="apply-online.html">Apply Online</a></li>
+                            <li><a class="dropdown-item" href="admission-notice.html">Admission Notice</a></li>
+                            <li><a class="dropdown-item" href="fee-structure.html">Fee Structure</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="newsEventsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            News and Events
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="newsEventsDropdown">
+                            <li><a class="dropdown-item" href="announcements.html">Announcements</a></li>
+                            <li><a class="dropdown-item" href="photo-gallery.html">Photo Gallery</a></li>
+                            <li><a class="dropdown-item" href="student-corner.html">Student Corner</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>🌟 Student Corner</h1>
+            <p>Celebrating the creativity and talent of our young learners</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <!-- Tabs Navigation -->
+        <ul class="nav nav-tabs" id="studentTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="drawings-tab" data-bs-toggle="tab" data-bs-target="#drawings" type="button" role="tab">
+                    <i class="fas fa-palette me-2"></i>Drawings & Artwork
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="stories-tab" data-bs-toggle="tab" data-bs-target="#stories" type="button" role="tab">
+                    <i class="fas fa-book me-2"></i>Stories & Tales
+                </button>
+            </li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="studentTabsContent">
+            <!-- Drawings & Artwork Tab -->
+            <div class="tab-pane fade show active" id="drawings" role="tabpanel">
+                <div class="section-heading">
+                    <i class="fas fa-palette"></i>Student Artwork Gallery
+                </div>
+                
+                <div class="filter-section">
+                    <button class="filter-btn active" onclick="filterDrawings('all')">All Classes</button>
+                    <button class="filter-btn" onclick="filterDrawings('junior')">Junior (I-IV)</button>
+                    <button class="filter-btn" onclick="filterDrawings('senior')">Senior (V-VIII)</button>
+                </div>
+
+                <div class="row" id="drawingsGallery">
+                    <!-- Artwork Card 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="student-card">
+                            <div class="student-artwork">
+                                <img src="/assets/images/features/image17.jpg" alt="Student Artwork">
+                                <span class="artwork-badge">Class II</span>
+                            </div>
+                            <div class="student-info">
+                                <div class="student-name">Mehuli Chandra</div>
+                                <div class="student-class">📚 Class II</div>
+                                <div class="student-content">
+                                    Creative artwork by Mehuli Chandra
+                                </div>
+                                <a href="../assets/images/features/image17.jpg" class="read-more" target="_blank">View Full Artwork →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artwork Card 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="student-card">
+                            <div class="student-artwork">
+                                <img src="/assets/images/features/image18.jpg" alt="Student Artwork">
+                                <span class="artwork-badge">Class III</span>
+                            </div>
+                            <div class="student-info">
+                                <div class="student-name">Jhanvi Patel</div>
+                                <div class="student-class">📚 Class III</div>
+                                <div class="student-content">
+                                    Creative artwork by Jhanvi Patel
+                                </div>
+                                <a href="../assets/images/features/image18.jpg" class="read-more" target="_blank">View Full Artwork →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artwork Card 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="student-card">
+                            <div class="student-artwork">
+                                <img src="/assets/images/features/image19.jpg" alt="Student Artwork">
+                                <span class="artwork-badge">Class I</span>
+                            </div>
+                            <div class="student-info">
+                                <div class="student-name">Alsiha</div>
+                                <div class="student-class">📚 Class I</div>
+                                <div class="student-content">
+                                    Creative artwork by Alsiha
+                                </div>
+                                <a href="../assets/images/features/image19.jpg" class="read-more" target="_blank">View Full Artwork →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artwork Card 4 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="student-card">
+                            <div class="student-artwork">
+                                <img src="/assets/images/features/image20.jpg" alt="Student Artwork">
+                                <span class="artwork-badge">Class III</span>
+                            </div>
+                            <div class="student-info">
+                                <div class="student-name">Alsihba</div>
+                                <div class="student-class">📚 Class III</div>
+                                <div class="student-content">
+                                    Creative artwork by Alsihba
+                                </div>
+                                <a href="../assets/images/features/image20.jpg" class="read-more" target="_blank">View Full Artwork →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artwork Card 5 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="student-card">
+                            <div class="student-artwork">
+                                <img src="/assets/images/features/image21.jpg" alt="Student Artwork">
+                                <span class="artwork-badge">Class VII</span>
+                            </div>
+                            <div class="student-info">
+                                <div class="student-name">Sayantan Das</div>
+                                <div class="student-class">📚 Class VII</div>
+                                <div class="student-content">
+                                    Creative artwork by Sayantan Das
+                                </div>
+                                <a href="../assets/images/features/image21.jpg" class="read-more" target="_blank">View Full Artwork →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artwork Card 6 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="student-card">
+                            <div class="student-artwork">
+                                <img src="/assets/images/features/image24.jpg" alt="Student Artwork">
+                                <span class="artwork-badge">Class I</span>
+                            </div>
+                            <div class="student-info">
+                                <div class="student-name">Anushka Majumder</div>
+                                <div class="student-class">📚 Class I</div>
+                                <div class="student-content">
+                                    Creative artwork by Anushka Majumder
+                                </div>
+                                <a href="../assets/images/features/image24.jpg" class="read-more" target="_blank">View Full Artwork →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artwork Card 7 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="student-card">
+                            <div class="student-artwork">
+                                <img src="/assets/images/features/image43.jpeg" alt="Student Artwork">
+                                <span class="artwork-badge">Class V</span>
+                            </div>
+                            <div class="student-info">
+                                <div class="student-name">Abir Mondal</div>
+                                <div class="student-class">📚 Class V</div>
+                                <div class="student-content">
+                                    Creative artwork by Abir Mondal
+                                </div>
+                                <a href="../assets/images/features/image43.jpeg" class="read-more" target="_blank">View Full Artwork →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artwork Card 8 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="student-card">
+                            <div class="student-artwork">
+                                <img src="/assets/images/features/image44.jpeg" alt="Student Artwork">
+                                <span class="artwork-badge">Class I</span>
+                            </div>
+                            <div class="student-info">
+                                <div class="student-name">Sourajit</div>
+                                <div class="student-class">📚 Class I</div>
+                                <div class="student-content">
+                                    Creative artwork by Sourajit
+                                </div>
+                                <a href="../assets/images/features/image44.jpeg" class="read-more" target="_blank">View Full Artwork →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artwork Card 9 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="student-card">
+                            <div class="student-artwork">
+                                <img src="/assets/images/features/image45.jpeg" alt="Student Artwork">
+                                <span class="artwork-badge">Class IV</span>
+                            </div>
+                            <div class="student-info">
+                                <div class="student-name">Alishba</div>
+                                <div class="student-class">📚 Class IV</div>
+                                <div class="student-content">
+                                    Creative artwork by Alishba
+                                </div>
+                                <a href="../assets/images/features/image45.jpeg" class="read-more" target="_blank">View Full Artwork →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artwork Card 10 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="student-card">
+                            <div class="student-artwork">
+                                <img src="/assets/images/features/image46.jpeg" alt="Student Artwork">
+                                <span class="artwork-badge">Class III</span>
+                            </div>
+                            <div class="student-info">
+                                <div class="student-name">Mehuli Chandra</div>
+                                <div class="student-class">📚 Class III</div>
+                                <div class="student-content">
+                                    Creative artwork by Mehuli Chandra
+                                </div>
+                                <a href="../assets/images/features/image46.jpeg" class="read-more" target="_blank">View Full Artwork →</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Artwork Card 11 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="student-card">
+                            <div class="student-artwork">
+                                <img src="/assets/images/features/image47.jpeg" alt="Student Artwork">
+                                <span class="artwork-badge">Class VIII</span>
+                            </div>
+                            <div class="student-info">
+                                <div class="student-name">Sayantan Das</div>
+                                <div class="student-class">📚 Class VIII</div>
+                                <div class="student-content">
+                                    Creative artwork by Sayantan Das
+                                </div>
+                                <a href="../assets/images/features/image47.jpeg" class="read-more" target="_blank">View Full Artwork →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stories & Tales Tab -->
+            <div class="tab-pane fade" id="stories" role="tabpanel">
+                <div class="section-heading">
+                    <i class="fas fa-book"></i>Student Stories & Tales
+                </div>
+
+                <div class="filter-section">
+                    <button class="filter-btn active" onclick="filterStories('all')">All Classes</button>
+                    <button class="filter-btn" onclick="filterStories('junior')">Junior (I-IV)</button>
+                    <button class="filter-btn" onclick="filterStories('senior')">Senior (V-VIII)</button>
+                </div>
+
+                <div class="row" id="storiesGallery">
+                    <!-- Story Card - Only First Page Shown -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="student-card">
+                            <div class="student-artwork">
+                                <img src="../assets/images/features/Stories/img1.jpeg" alt="Student Story - First Page">
+                                <span class="artwork-badge">Class III</span>
+                            </div>
+                            <div class="student-info">
+                                <div class="student-name">Mehuli Chandra</div>
+                                <div class="student-class">📚 Class III, Roll No-1</div>
+                                <div class="student-content">
+                                    "The Lion and the Mouse" - A classic fable about kindness and gratitude
+                                </div>
+                                <button class="read-more" style="background: none; border: none; cursor: pointer; padding: 0;" onclick="openStoryModal('mehuli-story')">Read Full Story →</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Story Modal -->
+                <div id="mehuli-story" class="story-modal">
+                    <div class="modal-content-wrapper">
+                        <div class="modal-header">
+                            <div>
+                                <h3>The Lion and the Mouse</h3>
+                                <p style="color: #666; margin: 5px 0 0 0; font-size: 0.9rem;">By Mehuli Chandra, Class III, Roll No-1</p>
+                            </div>
+                            <button class="modal-close" onclick="closeStoryModal('mehuli-story')">&times;</button>
+                        </div>
+                        <div class="story-pages-container">
+                            <div class="story-page">
+                                <img src="../assets/images/features/Stories/img1.jpeg" alt="Story Page 1">
+                                <div class="page-number">Page 1 of 5</div>
+                            </div>
+                            <div class="story-page">
+                                <img src="../assets/images/features/Stories/img2.jpeg" alt="Story Page 2">
+                                <div class="page-number">Page 2 of 5</div>
+                            </div>
+                            <div class="story-page">
+                                <img src="../assets/images/features/Stories/img3.jpeg" alt="Story Page 3">
+                                <div class="page-number">Page 3 of 5</div>
+                            </div>
+                            <div class="story-page">
+                                <img src="../assets/images/features/Stories/img4.jpeg" alt="Story Page 4">
+                                <div class="page-number">Page 4 of 5</div>
+                            </div>
+                            <div class="story-page">
+                                <img src="../assets/images/features/Stories/img5.jpeg" alt="Story Page 5">
+                                <div class="page-number">Page 5 of 5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="mb-3">About School</h5>
+                    <p>S.P. Memorial English Medium School is committed to excellence in ICSE curriculum education.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/index.html" class="text-white-50 text-decoration-none">Home</a></li>
+                        <li><a href="about.html" class="text-white-50 text-decoration-none">About</a></li>
+                        <li><a href="contact.html" class="text-white-50 text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="mb-3">Contact Info</h5>
+                    <p class="text-white-50">
+                        <i class="fas fa-phone me-2"></i> 033 3559 9796<br>
+                        <i class="fas fa-envelope me-2"></i> chandrima.sharma79@gmail.com<br>
+                        <i class="fas fa-map-marker-alt me-2"></i> Konnagar, Hoogly
+                    </p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center text-white-50">
+                <p>&copy; 2026 S.P. Memorial English Medium School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Filter functions (can be expanded with actual filtering logic)
+        function filterDrawings(filter) {
+            updateFilterButtons(event.target);
+            console.log('Filtering drawings by:', filter);
+        }
+
+        function filterStories(filter) {
+            updateFilterButtons(event.target);
+            console.log('Filtering stories by:', filter);
+        }
+
+        function filterPoetry(filter) {
+            updateFilterButtons(event.target);
+            console.log('Filtering poetry by:', filter);
+        }
+
+        function filterEssays(filter) {
+            updateFilterButtons(event.target);
+            console.log('Filtering essays by:', filter);
+        }
+
+        function updateFilterButtons(button) {
+            // Remove active class from all buttons in parent
+            const parent = button.parentElement;
+            parent.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            // Add active class to clicked button
+            button.classList.add('active');
+        }
+
+        // Story Modal Functions
+        function openStoryModal(storyId) {
+            const modal = document.getElementById(storyId);
+            if (modal) {
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling
+            }
+        }
+
+        function closeStoryModal(storyId) {
+            const modal = document.getElementById(storyId);
+            if (modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto'; // Allow scrolling
+            }
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('story-modal')) {
+                event.target.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.story-modal.show');
+                modals.forEach(modal => {
+                    modal.classList.remove('show');
+                    document.body.style.overflow = 'auto';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
